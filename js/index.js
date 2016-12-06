@@ -8,7 +8,7 @@ var myApp = angular.module('myApp', []);
 myApp.controller("menuCtrl", function($scope) {
 	
 	$scope.switchToAlgorithm = function() {
-		$("#codeDiv").load("two_sum.html");
+		$("#codeDiv").load("leetcode_list.html");
 	}
 	
 	$scope.switchToDesignPattern = function() {
@@ -23,4 +23,10 @@ myApp.controller("menuCtrl", function($scope) {
 		$("#codeDiv").load("two_sum.html");
 	}
 	
+});
+
+myApp.controller("lcListCtrl", function($scope, $http) {
+	$http.get("leetcodes.json").then(function(response) {
+        $scope.leetcodes = response.data.leetcodes;
+    }); 
 });
