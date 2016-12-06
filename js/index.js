@@ -28,5 +28,6 @@ myApp.controller("menuCtrl", function($scope) {
 myApp.controller("lcListCtrl", function($scope, $http) {
 	$http.get("leetcodes.json").then(function(response) {
         $scope.leetcodes = response.data.leetcodes;
+		alert($scope.leetcodes);
     }); 
 });
