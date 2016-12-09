@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Solution</title>
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+  <script src="js/angular.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/index.js"></script> 
+</head>
+
+<body>
+  <div id="main" ng-app="myApp" ng-controller="appCtrl">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="index.html">Keran<span class="logo_colour">Yang</span></a></h1>
+          <h2>Be brave. Stay wild.</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li class="selected"><a href="index.html">Home</a></li>
+          <li><a href="#" ng-click="switchToAlgorithm()">Algorithms Practice</a></li>
+          <li><a href="#">OO Design Pattern</a></li>
+          <li><a href="#">Java Tips</a></li>
+          <li><a href="#">Web Design Tips</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="content_header"></div>
+    <div id="site_content">
+      <!--<div id="banner"></div>-->
+		<h3 class="center"> Two Sum I </h3>
+	  
+	  <div style='background:#FFFFFF; font-family: Courier New, Courier; font-size: 10pt; COLOR: #000000; padding-bottom: 0px; padding-left: 0px; padding-right: 0px; padding-top: 0px;'>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;HashMap,&nbsp;use&nbsp;nums&nbsp;as&nbsp;values,&nbsp;indexed&nbsp;as&nbsp;keys
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;nums,&nbsp;unsorted
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;target
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;indices&nbsp;of&nbsp;the&nbsp;two&nbsp;numbers&nbsp;such&nbsp;that&nbsp;they&nbsp;add&nbsp;up&nbsp;to&nbsp;a&nbsp;specific&nbsp;target
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@complexity</strong>&nbsp;O(n)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>[]&nbsp;twoSum_1(<strong><font color='#7f0055'>int</font></strong>[]&nbsp;nums,&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;target)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>[]&nbsp;rv&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>[2];
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HashMap<Integer,&nbsp;Integer>&nbsp;hashmap&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;HashMap<Integer,&nbsp;Integer>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>for</font></strong>&nbsp;(<strong><font color='#7f0055'>int</font></strong>&nbsp;i&nbsp;=&nbsp;0;&nbsp;i&nbsp;<&nbsp;nums.length;&nbsp;i++)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(hashmap.containsKey(target&nbsp;-&nbsp;nums[i]))&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rv[0]&nbsp;=&nbsp;hashmap.get(target&nbsp;-&nbsp;nums[i]);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rv[1]&nbsp;=&nbsp;i;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;rv;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>else</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(!hashmap.containsKey(nums[i]))&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hashmap.put(nums[i],&nbsp;i);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;rv;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<div style='text-align:right;BORDER-TOP: #ccc 1px dashed'></div></div>
+
+<br>
+	  
+	  
+	  
+    <div id="footer">
+      <p><a href="index.html">Home</a> | <a href="examples.html">Algorithms Practice</a> | <a href="page.html">OO Design Pattern</a> | <a href="another_page.html">Java Tips</a> | <a href="contact.html">HTML Tips</a></p>
+	  <p>Keran Yang | yangkr920208@gmail.com | 1-647-862-7678 | 5898 Manzanillo Cres, Mississauga, L5M6Y6</p>
+    </div>
+  </div>
+</body>
+</html>
