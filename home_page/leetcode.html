@@ -6,14 +6,14 @@
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
-  <link rel="stylesheet" type="text/css" href="style/style.css" />
-  <script src="js/angular.js"></script>
-  <script src="js/jquery.js"></script>
-  <script src="js/index.js"></script> 
+  <link rel="stylesheet" type="text/css" href="../style/style.css" />
+  <script src="../js/angular.js"></script>
+  <script src="../js/jquery.js"></script>
+  <script src="leetcode.js"></script> 
 </head>
 
 <body>
-  <div id="main" ng-app="myApp" ng-controller="appCtrl">
+  <div id="main" ng-app="lcListApp" ng-controller="lcCtrl">
     <div id="header">
       <div id="logo">
         <div id="logo_text">
@@ -25,8 +25,8 @@
       <div id="menubar">
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li class="selected"><a href="index.html">Home</a></li>
-          <li><a href="home_page/leetcode.html">Algorithms Practice</a></li>
+          <li><a href="../index.html">Home</a></li>
+          <li class="selected"><a href="leetcode.html">Algorithms Practice</a></li>
           <li><a href="#">OO Design Pattern</a></li>
           <li><a href="#">Java Tips</a></li>
           <li><a href="#">Web Design Tips</a></li>
@@ -36,7 +36,34 @@
     <div id="content_header"></div>
     <div id="site_content">
       <div id="banner"></div>  
-	  
+	  <div id="lcListDiv">
+		<h3 class="center">Problem List</h3>
+		<input class="center" type="text" placeholder="Search Problems" ng-model="searchProblems">
+		<table id="lcTable">
+			<thead>
+				<tr>
+					<th>
+						<a href="#" ng-click="sortType = 'id'; sortReverse = !sortReverse">Id</a>
+					</th>
+					<th>
+						<a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">Name</a>
+					</th>
+					<th>
+						<a href="#" ng-click="sortType = 'difficulty'; sortReverse = !sortReverse">Difficulty</a>
+					</th>
+					<th>
+						Solution
+					</th>
+			</thead>
+			<tr ng-repeat="problem in leetcodes | orderBy:sortType:sortReverse | filter:searchProblems">
+				<td>{{problem.id}}</td>
+				<td><a ng-href="{{problem.problemURL}}" target="_blank">{{problem.name}}</a></td>
+				<td>{{problem.difficulty}}</td>
+				<td><a href="../leetcode_solutions/{{problem.solutionURL}}">Solution</a></td>
+			</tr>
+		</table>
+		<br>
+	  </div>
 	  <br>
     <div id="footer">
       <p><a href="index.html">Home</a> | <a href="examples.html">Algorithms Practice</a> | <a href="page.html">OO Design Pattern</a> | <a href="another_page.html">Java Tips</a> | <a href="contact.html">HTML Tips</a></p>

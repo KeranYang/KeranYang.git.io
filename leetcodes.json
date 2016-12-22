@@ -1,6 +1,0 @@
-{"leetcodes":[
-    {"id": "LeetCode1", "name": "Two Sum I", "solutionURL": "two_sum_1.html", "difficulty": "Easy", "editorial": "two_sum.pdf"},
-	{"id": "LeetCode167", "name": "Two Sum II - Input array is sorted", "solutionURL": "two_sum_2.html", "difficulty": "Medium", "editorial": "two_sum.pdf"},
-	{"id": "LintCode443", "name": "Two Sum III", "solutionURL": "two_sum_3.html", "difficulty": "Medium", "editorial": "two_sum.pdf"},
-	{"id": "LintCode382", "name": "Triangle Count", "solutionURL": "triangle_count.html", "difficulty": "Medium", "editorial": "triangle_count.pdf"}
-]}
