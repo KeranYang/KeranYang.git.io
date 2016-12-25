@@ -9,6 +9,7 @@
   <link rel="stylesheet" type="text/css" href="../style/style.css" />
   <script src="../js/angular.js"></script>
   <script src="../js/jquery.js"></script>
+  <script src="https://code.angularjs.org/1.2.28/angular-route.js"></script>
   <script src="leetcode.js"></script> 
 </head>
 
@@ -61,7 +62,7 @@
 				<td>{{problem.id}}</td>
 				<td><a ng-href="{{problem.problemURL}}" target="_blank">{{problem.name}}</a></td>
 				<td>{{problem.difficulty}}</td>
-				<td><a href="../leetcode_solutions/{{problem.solutionURL}}">Solution</a></td>
+				<td><button ng-click="shareMyData(problem.solutionURL);">Solution</button></td>
 			</tr>
 		</table>
 		<br>
