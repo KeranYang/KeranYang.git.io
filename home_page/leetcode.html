@@ -63,7 +63,7 @@
 			<!-- <tr ng-repeat="problem in leetcodes | orderBy:sortType:sortReverse | filter:searchProblems"> -->
 			<tr dir-paginate="problem in leetcodes | orderBy:sortType:sortReverse | filter:searchProblems | itemsPerPage:5">
 				<td>{{problem.id}}</td>
-				<td><a ng-href="{{problem.problemURL}}" target="_blank">{{problem.name}}</a></td>
+				<td id="problemNameTd"><a ng-href="{{problem.problemURL}}" target="_blank">{{problem.name}}</a></td>
 				<td>{{problem.difficulty}}</td>
 				<td><button ng-click="shareMyData(problem.solutionURL);">Solution</button></td>
 			</tr>
@@ -78,10 +78,11 @@
 		<br>
 	  </div>
 	  <br>
-    <div id="footer">
-      <p><a href="index.html">Home</a> | <a href="examples.html">Algorithms Practice</a> | <a href="page.html">OO Design Pattern</a> | <a href="another_page.html">Java Tips</a> | <a href="contact.html">HTML Tips</a></p>
-	  <p>Keran Yang | yangkr920208@gmail.com | 1-647-862-7678 | 5898 Manzanillo Cres, Mississauga, L5M6Y6</p>
-    </div>
+		<div id="footer">
+			<p><a href="index.html">Home</a> | <a href="examples.html">Algorithms Practice</a> | <a href="page.html">OO Design Pattern</a> | <a href="another_page.html">Java Tips</a> | <a href="contact.html">HTML Tips</a></p>
+			<p>Keran Yang | yangkr920208@gmail.com | 1-647-862-7678 | 5898 Manzanillo Cres, Mississauga, L5M6Y6</p>
+		</div>
+	</div>
   </div>
 </body>
 </html>

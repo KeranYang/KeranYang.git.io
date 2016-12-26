@@ -1,0 +1,147 @@
+<h3 class="center"> LRU Cache </h3>
+
+<div class="codeDiv"><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;LeetCode&nbsp;144
+<br/>&nbsp;*&nbsp;
+<br/>&nbsp;*&nbsp;get(key)&nbsp;-&nbsp;Get&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;key&nbsp;if&nbsp;the&nbsp;key&nbsp;exists&nbsp;in&nbsp;the&nbsp;cache,&nbsp;
+<br/>&nbsp;*&nbsp;otherwise&nbsp;return&nbsp;-1.
+<br/>&nbsp;*&nbsp;set(key,&nbsp;value)&nbsp;-&nbsp;Set&nbsp;or&nbsp;insert&nbsp;the&nbsp;value&nbsp;if&nbsp;the&nbsp;key&nbsp;is&nbsp;not&nbsp;already&nbsp;present.&nbsp;
+<br/>&nbsp;*&nbsp;When&nbsp;the&nbsp;cache&nbsp;reached&nbsp;its&nbsp;capacity,&nbsp;
+<br/>&nbsp;*&nbsp;it&nbsp;should&nbsp;invalidate&nbsp;the&nbsp;least&nbsp;recently&nbsp;used&nbsp;item&nbsp;before&nbsp;inserting&nbsp;a&nbsp;new&nbsp;item.
+<br/>&nbsp;*&nbsp;
+<br/>&nbsp;*&nbsp;Use&nbsp;a&nbsp;Double&nbsp;Linked&nbsp;List.
+<br/>&nbsp;*&nbsp;log(1)&nbsp;for&nbsp;both&nbsp;get&nbsp;and&nbsp;set
+<br/>&nbsp;*
+<br/>&nbsp;*/</font>
+<br/>
+<br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;LRUCache&nbsp;{
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//Test&nbsp;Case
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;main(String[]&nbsp;args)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LRUCache&nbsp;myCache&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;LRUCache(2);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myCache.set(2,&nbsp;1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myCache.set(1,&nbsp;1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myCache.get(2);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;myCache.set(4,&nbsp;1);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;Node&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;key;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;value;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;pre;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;next;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;getKey()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;key;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;setKey(<strong><font color='#7f0055'>int</font></strong>&nbsp;key)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.key&nbsp;=&nbsp;key;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;getValue()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;value;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;setValue(<strong><font color='#7f0055'>int</font></strong>&nbsp;value)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.value&nbsp;=&nbsp;value;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Node&nbsp;getPre()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;pre;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;setPre(Node&nbsp;pre)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.pre&nbsp;=&nbsp;pre;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Node&nbsp;getNext()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;setNext(Node&nbsp;next)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.next&nbsp;=&nbsp;next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;HashMap<Integer,&nbsp;Node>&nbsp;map;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Node&nbsp;head;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;Node&nbsp;tail;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;capacity;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;count;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;LRUCache(<strong><font color='#7f0055'>int</font></strong>&nbsp;capacity)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.count&nbsp;=&nbsp;0;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.capacity&nbsp;=&nbsp;capacity;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.map&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;HashMap<Integer,&nbsp;Node>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.head&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Node();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.tail&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Node();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.head.setNext(<strong><font color='#7f0055'>this</font></strong>.tail);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.head.setPre(<strong><font color='#7f0055'>null</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.tail.setPre(<strong><font color='#7f0055'>this</font></strong>.head);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>this</font></strong>.tail.setNext(<strong><font color='#7f0055'>null</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;get(<strong><font color='#7f0055'>int</font></strong>&nbsp;key)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(map.containsKey(key))&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;update(key);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;map.get(key).getValue();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>else</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;-1;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;update(<strong><font color='#7f0055'>int</font></strong>&nbsp;key)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;update(key,&nbsp;map.get(key).getValue());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;set(<strong><font color='#7f0055'>int</font></strong>&nbsp;key,&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;value)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(map.containsKey(key))&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;update(key,&nbsp;value);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>else</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;add(key,&nbsp;value);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;add(<strong><font color='#7f0055'>int</font></strong>&nbsp;key,&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;value)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(capacity&nbsp;<=&nbsp;0)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;newNode&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Node();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newNode.setKey(key);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newNode.setValue(value);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.put(key,&nbsp;newNode);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(count&nbsp;>=&nbsp;capacity)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tail&nbsp;=&nbsp;tail.getPre();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tail.setNext(<strong><font color='#7f0055'>null</font></strong>);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.remove(tail.getKey());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count--;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newNode.setNext(head.getNext());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newNode.setPre(head);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head.getNext().setPre(newNode);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head.setNext(newNode);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;count++;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;update(<strong><font color='#7f0055'>int</font></strong>&nbsp;key,&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;value)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Node&nbsp;cur&nbsp;=&nbsp;map.get(key);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cur.setValue(value);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.put(key,&nbsp;cur);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>(cur.getPre()&nbsp;==&nbsp;head)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cur.getPre().setNext(cur.getNext());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cur.getNext().setPre(cur.getPre());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cur.setPre(head);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cur.setNext(head.getNext());
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head.getNext().setPre(cur);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head.setNext(cur);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}</div>
+<br>

@@ -281,10 +281,19 @@ ul#menu li a:hover
 {
 	background-color: #FDEBD0;
 }
+
 #lcTable
 {
 	text-align: center; 
 	margin: 0 auto;
+}
+#lcTable td
+{
+	width: 100px;
+}
+#lcTable #problemNameTd
+{
+	width: 300px;
 }
 
 .search
