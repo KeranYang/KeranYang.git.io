@@ -1,4 +1,4 @@
-var lcListApp = angular.module('lcListApp', ['ngRoute']);
+var lcListApp = angular.module('lcListApp', ['ngRoute', 'angularUtils.directives.dirPagination']);
 
 lcListApp.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider){
     $routeProvider

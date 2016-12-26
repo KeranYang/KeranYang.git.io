@@ -7,9 +7,11 @@
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
   <link rel="stylesheet" type="text/css" href="../style/style.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="../style/bootstrap.css"> -->
   <script src="../js/angular.js"></script>
   <script src="../js/jquery.js"></script>
-  <script src="https://code.angularjs.org/1.2.28/angular-route.js"></script>
+  <script src="../js/angular-route.js"></script>
+  <script src="../js/dirPagination.js"></script>
   <script src="leetcode.js"></script> 
 </head>
 
@@ -58,13 +60,21 @@
 						Solution
 					</th>
 			</thead>
-			<tr ng-repeat="problem in leetcodes | orderBy:sortType:sortReverse | filter:searchProblems">
+			<!-- <tr ng-repeat="problem in leetcodes | orderBy:sortType:sortReverse | filter:searchProblems"> -->
+			<tr dir-paginate="problem in leetcodes | orderBy:sortType:sortReverse | filter:searchProblems | itemsPerPage:5">
 				<td>{{problem.id}}</td>
 				<td><a ng-href="{{problem.problemURL}}" target="_blank">{{problem.name}}</a></td>
 				<td>{{problem.difficulty}}</td>
 				<td><button ng-click="shareMyData(problem.solutionURL);">Solution</button></td>
 			</tr>
 		</table>
+		<div class="center">
+			<dir-pagination-controls
+				max-size="5"
+				direction-links="true"
+				boundary-links="true" >
+			</dir-pagination-controls>
+		</div>
 		<br>
 	  </div>
 	  <br>
