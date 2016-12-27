@@ -1,0 +1,13 @@
+<h3 class="center"> Delete Node in a Linked List </h3>
+<div class="codeDiv">&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Delete&nbsp;a&nbsp;node&nbsp;(except&nbsp;the&nbsp;tail)&nbsp;in&nbsp;a&nbsp;singly&nbsp;linked&nbsp;list.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;node&nbsp;-&nbsp;Given&nbsp;only&nbsp;access&nbsp;to&nbsp;that&nbsp;node.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;This&nbsp;is&nbsp;not&nbsp;a&nbsp;good&nbsp;problem,&nbsp;usually&nbsp;we&nbsp;don't&nbsp;modify&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;Node.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@timecomplexity</strong>&nbsp;-&nbsp;O(1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;deleteNode(ListNode&nbsp;node)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node.val&nbsp;=&nbsp;node.next.val;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node.next&nbsp;=&nbsp;node.next.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+</div>
+<br>

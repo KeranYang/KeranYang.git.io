@@ -5,5 +5,7 @@
 	{"id": "LintCode382", "name": "Triangle Count", "solutionURL": "triangle_count.html", "difficulty": "Medium", "problemURL": "https://www.lintcode.com/zh-cn/problem/triangle-count/"},
 	{"id": "LeetCode215", "name": "Kth Largest Element in an Array", "solutionURL": "kth_largest_1.html", "difficulty": "Medium", "problemURL": "https://leetcode.com/problems/kth-largest-element-in-an-array/"},
 	{"id": "LeetCode2", "name": "Add Two Numbers", "solutionURL": "add_two_numbers.html", "difficulty": "Medium", "problemURL": "https://leetcode.com/problems/add-two-numbers/"},
-	{"id": "LeetCode146", "name": "LRU Cache", "solutionURL": "lru_cache.html", "difficulty": "Hard", "problemURL": "https://leetcode.com/problems/lru-cache/"}
+	{"id": "LeetCode146", "name": "LRU Cache", "solutionURL": "lru_cache.html", "difficulty": "Hard", "problemURL": "https://leetcode.com/problems/lru-cache/"},
+	{"id": "LeetCode237", "name": "Delete a node in a Linked List", "solutionURL": "delete_node_in_a_linked_list.html", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/delete-node-in-a-linked-list/"},
+	{"id": "LeetCode206", "name": "Reverse Linked List", "solutionURL": "reverse_linkedlist.html", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/reverse-linked-list/"}
 ]}
