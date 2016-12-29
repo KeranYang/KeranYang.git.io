@@ -1,0 +1,32 @@
+<h3 class="center"> Merge Two Sorted Lists </h3>
+<div class="codeDiv">&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;LeetCode&nbsp;21
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Merge&nbsp;two&nbsp;sorted&nbsp;linked&nbsp;list.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;list1
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;list2
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;sorted&nbsp;merged&nbsp;list
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@timecomplexity</strong>&nbsp;-&nbsp;O(n)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;ListNode&nbsp;mergeLists(ListNode&nbsp;list1,&nbsp;ListNode&nbsp;list2)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ListNode&nbsp;dummy&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;ListNode(0);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ListNode&nbsp;temp&nbsp;=&nbsp;dummy;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>&nbsp;(list1&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;&&&nbsp;list2&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(list1.val&nbsp;<=&nbsp;list2.val)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp.next&nbsp;=&nbsp;list1;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list1&nbsp;=&nbsp;list1.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;<strong><font color='#7f0055'>else</font></strong>&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp.next&nbsp;=&nbsp;list2;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list2&nbsp;=&nbsp;list2.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;temp.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(list1&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp.next&nbsp;=&nbsp;list1;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(list2&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp.next&nbsp;=&nbsp;list2;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;dummy.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+</div>
+<br>
