@@ -12,5 +12,8 @@
 	{"id": "LeetCode21", "name": "Merge Two Sorted Lists", "solutionURL": "merge_two_sorted_lists.html", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/merge-two-sorted-lists/"},
 	{"id": "LeetCode328", "name": "Odd Even Linked List", "solutionURL": "odd_even.html", "difficulty": "Medium", "problemURL": "https://leetcode.com/problems/odd-even-linked-list/"},
 	{"id": "LeetCode141", "name": "Linked List Cycle", "solutionURL": "linked_list_cycle.html", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/linked-list-cycle/"},
-	{"id": "LeetCode160", "name": "Intersection of two Linked Lists", "solutionURL": "intersection_linkedlist.html", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/intersection-of-two-linked-lists/"}
+	{"id": "LeetCode160", "name": "Intersection of two Linked Lists", "solutionURL": "intersection_linkedlist.html", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/intersection-of-two-linked-lists/"},
+	{"id": "LeetCode138", "name": "Copy List with Random Pointer", "solutionURL": "copy_list_with_random_pointer.html", "difficulty": "Hard", "problemURL": "https://leetcode.com/problems/copy-list-with-random-pointer/"},
+	{"id": "LeetCode234", "name": "Palindrome Linked List", "solutionURL": "palindrome_linked_list.html", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/palindrome-linked-list/"},
+	{"id": "LeetCode142", "name": "Linked List Cycle II", "solutionURL": "linked_list_cycle_ii.html", "difficulty": "Medium", "problemURL": "https://leetcode.com/problems/linked-list-cycle-ii/"}
 ]}

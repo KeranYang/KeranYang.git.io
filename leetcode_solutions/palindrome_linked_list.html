@@ -1,0 +1,44 @@
+<h3 class="center"> Palindrome Linked List </h3>
+<div class="codeDiv">&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;LeetCode&nbsp;234
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;head
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;true&nbsp;if&nbsp;the&nbsp;linked&nbsp;list&nbsp;is&nbsp;a&nbsp;palindrome.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@timecomplexity</strong>&nbsp;-&nbsp;O(n)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@spacecomplexity</strong>&nbsp;-&nbsp;O(1)&nbsp;->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Although&nbsp;it&nbsp;takes&nbsp;O(1)&nbsp;space,&nbsp;it&nbsp;breaks&nbsp;the&nbsp;structure&nbsp;of
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;original&nbsp;linked&nbsp;list.&nbsp;If&nbsp;the&nbsp;input&nbsp;is&nbsp;read-only,&nbsp;the&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;space&nbsp;complexity&nbsp;should&nbsp;be&nbsp;O(n)&nbsp;accordingly.&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;isPalindrome(ListNode&nbsp;head)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(head&nbsp;==&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;||&nbsp;head.next&nbsp;==&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;1.&nbsp;Divide&nbsp;the&nbsp;linked&nbsp;list&nbsp;evenly.&nbsp;O(n)
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ListNode&nbsp;slow&nbsp;=&nbsp;head;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ListNode&nbsp;fast&nbsp;=&nbsp;head;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ListNode&nbsp;pre_slow&nbsp;=&nbsp;head;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>&nbsp;(fast&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;&&&nbsp;fast.next&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre_slow&nbsp;=&nbsp;slow;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;slow&nbsp;=&nbsp;slow.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fast&nbsp;=&nbsp;fast.next.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ListNode&nbsp;firstHalf&nbsp;=&nbsp;head;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ListNode&nbsp;secondHalf&nbsp;=&nbsp;fast&nbsp;==&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;?&nbsp;slow&nbsp;:&nbsp;slow.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;2.&nbsp;Reverse&nbsp;the&nbsp;second&nbsp;half.&nbsp;O(n)
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;secondHalf&nbsp;=&nbsp;reverseList2(secondHalf);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pre_slow.next&nbsp;=&nbsp;<strong><font color='#7f0055'>null</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;3.&nbsp;Compare.&nbsp;O(n)
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>&nbsp;(firstHalf&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(firstHalf.val&nbsp;!=&nbsp;secondHalf.val)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>false</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;firstHalf&nbsp;=&nbsp;firstHalf.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;secondHalf&nbsp;=&nbsp;secondHalf.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;<strong><font color='#7f0055'>true</font></strong>;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+</div>
+<br>

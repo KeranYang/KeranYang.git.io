@@ -1,0 +1,84 @@
+<h3 class="center"> Copy List with Random Pointer </h3>
+<div class="codeDiv">&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;LeetCode&nbsp;138
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;head&nbsp;-&nbsp;A&nbsp;linked&nbsp;list&nbsp;is&nbsp;given&nbsp;such&nbsp;that&nbsp;each&nbsp;node&nbsp;contains&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;additional&nbsp;random&nbsp;pointer&nbsp;which&nbsp;could&nbsp;point&nbsp;to&nbsp;any&nbsp;node&nbsp;in&nbsp;the&nbsp;list&nbsp;or&nbsp;null.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;a&nbsp;deep&nbsp;copy&nbsp;of&nbsp;the&nbsp;list
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;class&nbsp;RandomListNode&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;label;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomListNode&nbsp;next,&nbsp;random;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomListNode(int&nbsp;x)&nbsp;{&nbsp;this.label&nbsp;=&nbsp;x;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Use&nbsp;HashMap.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Time&nbsp;Complexity&nbsp;-&nbsp;O(n)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Space&nbsp;Complexity&nbsp;-&nbsp;O(n)&nbsp;for&nbsp;HashMap.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;RandomListNode&nbsp;copyRandomList1(RandomListNode&nbsp;head)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(head&nbsp;==&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;head;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomListNode&nbsp;temp&nbsp;=&nbsp;head;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HashMap<RandomListNode,&nbsp;RandomListNode>&nbsp;map&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;HashMap<>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>&nbsp;(temp&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.put(temp,&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;RandomListNode(temp.label));
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;temp.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;head;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>&nbsp;(temp&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomListNode&nbsp;cur&nbsp;=&nbsp;map.get(temp);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cur.next&nbsp;=&nbsp;temp.next&nbsp;==&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;?&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;:&nbsp;map.get(temp.next);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cur.random&nbsp;=&nbsp;temp.random&nbsp;==&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;?&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;:&nbsp;map.get(temp.random);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;temp.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;map.get(head);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>/*
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Time&nbsp;Complexity&nbsp;-&nbsp;O(n)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Space&nbsp;Complexity&nbsp;-&nbsp;O(1)
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;RandomListNode&nbsp;copyRandomList2(RandomListNode&nbsp;head)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(head&nbsp;==&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;head;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;1.&nbsp;copy&nbsp;each&nbsp;node&nbsp;and&nbsp;append&nbsp;the&nbsp;new&nbsp;node&nbsp;after&nbsp;its&nbsp;father
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomListNode&nbsp;temp&nbsp;=&nbsp;head;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>&nbsp;(temp&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomListNode&nbsp;newNode&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;RandomListNode(temp.label);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newNode.next&nbsp;=&nbsp;temp.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp.next&nbsp;=&nbsp;newNode;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;newNode.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;2.&nbsp;assign&nbsp;random&nbsp;pointer
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;head;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>&nbsp;(temp&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomListNode&nbsp;newNode&nbsp;=&nbsp;temp.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newNode.random&nbsp;=&nbsp;temp.random&nbsp;==&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;?&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;:&nbsp;temp.random.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;temp.next.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color='#3f7f5f'>//&nbsp;3.&nbsp;reconstruct&nbsp;the&nbsp;original&nbsp;list
+</font><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;head;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomListNode&nbsp;newNode&nbsp;=&nbsp;head.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RandomListNode&nbsp;rv&nbsp;=&nbsp;newNode;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>&nbsp;(temp&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp.next&nbsp;=&nbsp;temp.next&nbsp;==&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;?&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;:&nbsp;temp.next.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newNode.next&nbsp;=&nbsp;temp.next&nbsp;==&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;?&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;:&nbsp;temp.next.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;temp&nbsp;=&nbsp;temp.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newNode&nbsp;=&nbsp;temp&nbsp;==&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;?&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;:&nbsp;temp.next;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;rv;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+</div>
+<br>
