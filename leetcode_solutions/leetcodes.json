@@ -15,5 +15,10 @@
 	{"id": "LeetCode160", "name": "Intersection of two Linked Lists", "solutionURL": "intersection_linkedlist.html", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/intersection-of-two-linked-lists/"},
 	{"id": "LeetCode138", "name": "Copy List with Random Pointer", "solutionURL": "copy_list_with_random_pointer.html", "difficulty": "Hard", "problemURL": "https://leetcode.com/problems/copy-list-with-random-pointer/"},
 	{"id": "LeetCode234", "name": "Palindrome Linked List", "solutionURL": "palindrome_linked_list.html", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/palindrome-linked-list/"},
-	{"id": "LeetCode142", "name": "Linked List Cycle II", "solutionURL": "linked_list_cycle_ii.html", "difficulty": "Medium", "problemURL": "https://leetcode.com/problems/linked-list-cycle-ii/"}
+	{"id": "LeetCode142", "name": "Linked List Cycle II", "solutionURL": "linked_list_cycle_ii.html", "difficulty": "Medium", "problemURL": "https://leetcode.com/problems/linked-list-cycle-ii/"},
+	{"id": "LeetCode104", "name": "Maximum Depth of Binary Tree", "solutionURL": "max_depth_of_bt.html", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/maximum-depth-of-binary-tree/"},
+	{"id": "LeetCode226", "name": "Invert Binary Tree", "solutionURL": "invert_bt.html", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/invert-binary-tree/"},
+	{"id": "LeetCode235", "name": "Lowest Common Ancestor of a Binary Search Tree", "solutionURL": "lca_of_bst.html", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/"},
+	{"id": "LeetCode236", "name": "Lowest Common Ancestor of a Binary Tree", "solutionURL": "lca_of_bt.html", "difficulty": "Medium", "problemURL": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/"},
+	{"id": "LeetCode100", "name": "Same Tree", "solutionURL": "same_tree.html", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/same-tree/"}
 ]}

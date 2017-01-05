@@ -1,0 +1,27 @@
+<h3 class="center"> Lowest Common Ancestor of a Binary Tree </h3>
+<div class="codeDiv">&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;LeetCode&nbsp;236
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Problem&nbsp;solved&nbsp;by&nbsp;expanding&nbsp;the&nbsp;definition&nbsp;of&nbsp;LCA
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;If&nbsp;the&nbsp;current&nbsp;(sub)tree&nbsp;contains&nbsp;both&nbsp;p&nbsp;and&nbsp;q,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;then&nbsp;the&nbsp;function&nbsp;result&nbsp;is&nbsp;their&nbsp;LCA.&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;If&nbsp;only&nbsp;one&nbsp;of&nbsp;them&nbsp;is&nbsp;in&nbsp;that&nbsp;subtree,&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;then&nbsp;the&nbsp;result&nbsp;is&nbsp;that&nbsp;one&nbsp;of&nbsp;them.&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;If&nbsp;neither&nbsp;are&nbsp;in&nbsp;that&nbsp;subtree,&nbsp;the&nbsp;result&nbsp;is&nbsp;null.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;root&nbsp;-&nbsp;a&nbsp;[binary&nbsp;tree].
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;p
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@param</strong>&nbsp;q
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;<strong>@return</strong>&nbsp;Lowest&nbsp;Common&nbsp;Ancestor&nbsp;of&nbsp;p&nbsp;and&nbsp;q&nbsp;in&nbsp;root.
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>static</font></strong>&nbsp;TreeNode&nbsp;lowestCommonAncestorBT(TreeNode&nbsp;root,&nbsp;TreeNode&nbsp;p,&nbsp;TreeNode&nbsp;q)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>if</font></strong>&nbsp;(root&nbsp;==&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;||&nbsp;root&nbsp;==&nbsp;p&nbsp;||&nbsp;root&nbsp;==&nbsp;q)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;root;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TreeNode&nbsp;left&nbsp;=&nbsp;lowestCommonAncestorBT(root.left,&nbsp;p,&nbsp;q);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TreeNode&nbsp;right&nbsp;=&nbsp;lowestCommonAncestorBT(root.right,&nbsp;p,&nbsp;q);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;left&nbsp;==&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;?&nbsp;(&nbsp;right&nbsp;==&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;?&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;:&nbsp;right)&nbsp;:&nbsp;(right&nbsp;==&nbsp;<strong><font color='#7f0055'>null</font></strong>&nbsp;?&nbsp;left&nbsp;:&nbsp;root);&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+</div>
+<br>
