@@ -1,0 +1,45 @@
+<h3 class="center"> Binary Search Tree Iterator </h3>
+
+<div class="codeDiv"><font color='#2040a0'>/**
+<br/>&nbsp;*&nbsp;LeetCode&nbsp;173&nbsp;-&nbsp;Binary&nbsp;Search&nbsp;Tree&nbsp;Iterator
+<br/>&nbsp;*&nbsp;Your&nbsp;BSTIterator&nbsp;will&nbsp;be&nbsp;called&nbsp;like&nbsp;this:
+<br/>&nbsp;*&nbsp;BSTIterator&nbsp;i&nbsp;=&nbsp;new&nbsp;BSTIterator(root);
+<br/>&nbsp;*&nbsp;while&nbsp;(i.hasNext())&nbsp;v[f()]&nbsp;=&nbsp;i.next();
+<br/>&nbsp;*&nbsp;
+<br/>&nbsp;*&nbsp;next()&nbsp;and&nbsp;hasNext()&nbsp;should&nbsp;run&nbsp;in&nbsp;average&nbsp;O(1)&nbsp;time&nbsp;and&nbsp;uses&nbsp;O(h)&nbsp;memory,&nbsp;
+<br/>&nbsp;*&nbsp;where&nbsp;h&nbsp;is&nbsp;the&nbsp;height&nbsp;of&nbsp;the&nbsp;tree.
+<br/>&nbsp;*/</font>
+<br/>
+<br/><font color='#3f7f5f'>//DFS&nbsp;-&nbsp;stack
+</font><br/><strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>class</font></strong>&nbsp;BSTIterator&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;Stack<TreeNode>&nbsp;stack;
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;BSTIterator(TreeNode&nbsp;root)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stack&nbsp;=&nbsp;<strong><font color='#7f0055'>new</font></strong>&nbsp;Stack<TreeNode>();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pushAllLeft(root);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;<strong>@return</strong>&nbsp;whether&nbsp;we&nbsp;have&nbsp;a&nbsp;next&nbsp;smallest&nbsp;number&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>boolean</font></strong>&nbsp;hasNext()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;!stack.isEmpty();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<font color='#2040a0'>/**&nbsp;<strong>@return</strong>&nbsp;the&nbsp;next&nbsp;smallest&nbsp;number&nbsp;*/</font>
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>public</font></strong>&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;next()&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TreeNode&nbsp;currentTop&nbsp;=&nbsp;stack.pop();
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>int</font></strong>&nbsp;rv&nbsp;=&nbsp;currentTop.val;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pushAllLeft(currentTop.right);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>return</font></strong>&nbsp;rv;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>private</font></strong>&nbsp;<strong><font color='#7f0055'>void</font></strong>&nbsp;pushAllLeft(TreeNode&nbsp;node)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><font color='#7f0055'>while</font></strong>&nbsp;(node&nbsp;!=&nbsp;<strong><font color='#7f0055'>null</font></strong>)&nbsp;{
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stack.push(node);
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node&nbsp;=&nbsp;node.left;
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>&nbsp;&nbsp;&nbsp;&nbsp;}
+<br/>}
+</div>
+<br>
+
