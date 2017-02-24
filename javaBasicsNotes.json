@@ -1,0 +1,7 @@
+{"notes":[
+    {"id": "1", "name": "Java Basic - Variable's Life Cycle", "pdf": "java_basics/variableLifeCycle.pdf"},
+	{"id": "2", "name": "Java Basic - Java Assertion", "pdf": "java_basics/javaAssertion.pdf"},
+	{"id": "3", "name": "Java Basic - Wrap a primitive", "pdf": "java_basics/wrapPrimitive.pdf"},
+    {"id": "4", "name": "Java Basic - JVM, JRE, JDK", "pdf": "java_basics/JVM_JRE_JDK.pdf"},
+	{"id": "5", "name": "Java Basic - Bit Manipulation", "pdf": "java_basics/bitManipulation.pdf"}
+]}
