@@ -29,6 +29,8 @@
 	{"id": "LeetCode404", "name": "Sum of Left Leaves", "solutionURL": "sum_of_left_leaves.html", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/sum-of-left-leaves/"},
 	{"id": "LeetCode461", "name": "Hamming Distance", "solutionURL": "algorithm_practice/HammingDistance.pdf", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/hamming-distance/"},
 	{"id": "LeetCode500", "name": "Keyboard Row", "solutionURL": "algorithm_practice/KeyboardRow.pdf", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/keyboard-row/"},
-	{"id": "LeetCode476", "name": "Number Complement", "solutionURL": "algorithm_practice/NumberComplement.pdf", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/number-complement/"}
+	{"id": "LeetCode476", "name": "Number Complement", "solutionURL": "algorithm_practice/NumberComplement.pdf", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/number-complement/"},
+	{"id": "LeetCode339", "name": "Nested List Weight Sum I", "solutionURL": "algorithm_practice/NestedListWeightSum.pdf", "difficulty": "Easy", "problemURL": "https://leetcode.com/problems/nested-list-weight-sum/"},
+	{"id": "LeetCode364", "name": "Nested List Weight Sum II", "solutionURL": "algorithm_practice/NestedListWeightSum.pdf", "difficulty": "Medium", "problemURL": "https://leetcode.com/problems/nested-list-weight-sum-ii/"}
 
 ]}
