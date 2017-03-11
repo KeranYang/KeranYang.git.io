@@ -4,5 +4,6 @@
 	{"id": "3", "name": "Java Basic - Wrap a primitive", "pdf": "java_basics/wrapPrimitive.pdf"},
     {"id": "4", "name": "Java Basic - JVM, JRE, JDK", "pdf": "java_basics/JVM_JRE_JDK.pdf"},
 	{"id": "5", "name": "Java Basic - Bit Manipulation", "pdf": "java_basics/bitManipulation.pdf"},
-	{"id": "6", "name": "OO Design - Observer Pattern", "pdf": "OOD/ObserverPattern.pdf"}
+	{"id": "6", "name": "OO Design - Observer Pattern", "pdf": "OOD/ObserverPattern.pdf"},
+	{"id": "7", "name": "OO Design - Decorator Pattern", "pdf": "OOD/DecoratorPattern.pdf"}
 ]}
